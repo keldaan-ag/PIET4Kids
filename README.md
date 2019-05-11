@@ -1,2 +1,2 @@
 # PIET4Kids
-Make PIET program in real life.
+Make PIET programs in real life.
