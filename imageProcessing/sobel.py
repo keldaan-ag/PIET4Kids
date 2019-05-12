@@ -23,12 +23,12 @@ def sobel_filter(img):
     horizontal_gradient = filters.convolve(img_gray, sobel_filter_x)
     vertical_gradient = filters.convolve(img_gray, sobel_filter_y)
 
-    edge_gradient = np.sqrt(np.multiply(horizontal_gradient, horizontal_gradient) +
-                           np.multiply(vertical_gradient, vertical_gradient))
-
+    edge_gradient = np.hypot(horizontal_gradient, vertical_gradient)
     edge_gradient = edge_gradient / np.std(edge_gradient)
+
+    edge_angle = np.arctan2(vertical_gradient, horizontal_gradient)
 
     # imageio.imsave(os.path.join(img_dir, "horizontal_gradient.jpg"), horizontal_gradient)
     # imageio.imsave(os.path.join(img_dir, "vertical_gradient.jpg"), vertical_gradient)
 
-    return edge_gradient
+    return edge_gradient, edge_angle

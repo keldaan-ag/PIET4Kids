@@ -1,20 +1,23 @@
 import imageio
 import os
-from imageProcessing import sobel
+from imageProcessing.sobel import sobel_filter
 from imageProcessing.threshold import threshold
-import matplotlib.pyplot as plt
-import numpy as np
-
+from imageProcessing.clustering import compute_weighted_graph
 
 base_dir = r"C:\Users\arnau\OneDrive\Bureau\PIET4Kids"
 img_dir = os.path.join(base_dir, "img")
 
+print("loading picture as array...")
 img = imageio.imread(os.path.join(img_dir, "test.jpg"))
 
-edge_gradient = sobel.sobel_filter(img)
-plt.hist(edge_gradient.flatten(), 100)
-plt.show()
+print("computing edge gradient intensity and edge grandient direction...")
+(edge_gradient, edge_angle) = sobel_filter(img)
 
-img_threshold = threshold(edge_gradient, 2)
-imageio.imsave(os.path.join(img_dir, "img_threshold.jpg"), img_threshold)
+print("Computing threshold...")
+img_threshold = threshold(edge_gradient, 1)
+
+print("Creating weighted graph")
+weighted_graph = compute_weighted_graph(img_threshold)
+
+imageio.imsave(os.path.join(img_dir, "edge_angle.jpg"), edge_angle)
 imageio.imsave(os.path.join(img_dir, "edge_gradient.jpg"), edge_gradient)
