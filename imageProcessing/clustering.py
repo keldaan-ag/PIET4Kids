@@ -1,5 +1,11 @@
 import numpy as np
 
+# https://www.geeksforgeeks.org/connected-components-in-an-undirected-graph/
+# https://www.programiz.com/python-programming/methods/built-in/sorted
+
+# D(n ∪ m) ≤ min(D(n), D(m)) + KD/|n ∪ m|
+# M(n ∪ m) ≤ min(M(n), M(m)) + KM/|n ∪ m|
+
 def compute_weighted_graph(img_threshold):
     nodes = getNodes(img_threshold)
     print(nodes)
