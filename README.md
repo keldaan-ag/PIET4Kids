@@ -10,6 +10,7 @@ In order to do so:
 
 First step consist in extracting PIET program from picture.
 example picture:
+
 ![piet picture](img/test.jpg)
 
 ### Sobel filters
@@ -17,9 +18,11 @@ example picture:
 To detected squares edges, i compute gradient magnitude and gradient direction.
 
 Gradient magnitude:
+
 ![gradient magnitude](img/edge_gradient.jpg)
 
 Gradient direction:
+
 ![gradient direction](img/edge_angle.jpg)
 
 ### Threshold
